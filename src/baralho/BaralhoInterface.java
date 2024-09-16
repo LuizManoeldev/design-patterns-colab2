@@ -1,8 +1,8 @@
 package baralho;
 public interface BaralhoInterface {
-    void shuffle();
+    void shuffle(); // Embaralhar
 
-    Carta dealCard();
+    Carta dealCard(); // Distribuir
 
     int size();
 
