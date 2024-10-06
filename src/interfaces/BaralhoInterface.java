@@ -3,7 +3,7 @@ package interfaces;
 import cartas.CartaTradicional;
 
 public interface BaralhoInterface {
-    void shuffle();
+    void shuffle(); // Embaralhar
 
     CartaTradicional dealCard();
 
