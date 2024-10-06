@@ -3,8 +3,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cartas.CartaTradicional;
+import interfaces.BaralhoInterface;
+
 public class BaralhoUno implements BaralhoInterface {
-    private List<Carta> deck;
+    private List<CartaTradicional> deck;
     private final int NUMBER_OF_CARDS = 113;
     private Random randomNumbers;
 
@@ -17,7 +20,7 @@ public class BaralhoUno implements BaralhoInterface {
         // Adiciona as cartas numeradas
         for (String cor : cores) {
             for (int i = 0; i <= 9; i++) {
-                deck.add(new Carta(String.valueOf(i), cor, i)); // Carta 0 a 9
+                deck.add(new CartaTradicional(String.valueOf(i), cor, i)); // Carta 0 a 9
             }
         }
 
@@ -25,33 +28,33 @@ public class BaralhoUno implements BaralhoInterface {
         for (String cor : cores) {
             // Compre duas, Inverter e Pular (2 de cada cor)
             for (int i = 0; i < 2; i++) {
-                deck.add(new Carta("Compre duas", cor, 20));
-                deck.add(new Carta("Inverter", cor, 20));
-                deck.add(new Carta("Pular", cor, 20));
+                deck.add(new CartaTradicional("Compre duas", cor, 20));
+                deck.add(new CartaTradicional("Inverter", cor, 20));
+                deck.add(new CartaTradicional("Pular", cor, 20));
             }
         }
 
         // Cartas sem cor
         for (int i = 0; i < 4; i++) {
-            deck.add(new Carta("Compre 4", "Coringa", 50));
-            deck.add(new Carta("Curinga", "Coringa", 50));
+            deck.add(new CartaTradicional("Compre 4", "Coringa", 50));
+            deck.add(new CartaTradicional("Curinga", "Coringa", 50));
         }
 
         // Carta Trocar Mãos
-        deck.add(new Carta("Trocar Mãos", "Coringa", 50));
+        deck.add(new CartaTradicional("Trocar Mãos", "Coringa", 50));
     }
 
     @Override
     public void shuffle() {
         for (int first = 0; first < deck.size(); first++) {
             int second = randomNumbers.nextInt(NUMBER_OF_CARDS);
-            Carta temp = deck.remove(second);
+            CartaTradicional temp = deck.remove(second);
             deck.add(0, temp);
         }
     }
 
     @Override
-    public Carta dealCard() {
+    public CartaTradicional dealCard() {
         return deck.remove(deck.size() - 1);
     }
 
@@ -69,7 +72,7 @@ public class BaralhoUno implements BaralhoInterface {
     public String toString() {
         StringBuilder s = new StringBuilder();
         int column = 0;
-        for (Carta card : deck) {
+        for (CartaTradicional card : deck) {
             column++;
             s.append(card.toString()).append("   ");
             if (column % 4 == 0) {

@@ -3,9 +3,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import cartas.CartaTradicional;
+import interfaces.BaralhoInterface;
+import utils.Cor;
+
 
 public class Baralho implements BaralhoInterface {
-   private List<Carta> deck;
+   private List<CartaTradicional> deck;
    private final int NUMBER_OF_CARDS = 52;
    private Random randomNumbers;
 
@@ -17,7 +21,7 @@ public class Baralho implements BaralhoInterface {
       randomNumbers = new Random();
 
       for (int count = 0; count < NUMBER_OF_CARDS; count++) {
-         deck.add(new Carta(faces[count % 13], naipes[count / 13], 0,
+         deck.add(new CartaTradicional(faces[count % 13], naipes[count / 13], 0,
                naipes[count / 13] == "\u2665" || naipes[count / 13] == "\u2666" ? Cor.VERMELHO : Cor.PRETO));
       }
    }
@@ -26,13 +30,13 @@ public class Baralho implements BaralhoInterface {
    public void shuffle() {
       for (int first = 0; first < deck.size(); first++) {
          int second = randomNumbers.nextInt(NUMBER_OF_CARDS);
-         Carta temp = deck.remove(second);
+         CartaTradicional temp = deck.remove(second);
          deck.add(0, temp);
       }
    }
 
    @Override
-   public Carta dealCard() {
+   public CartaTradicional dealCard() {
       return deck.remove(deck.size() - 1);
    }
 
@@ -50,7 +54,7 @@ public class Baralho implements BaralhoInterface {
    public String toString() {
       StringBuilder s = new StringBuilder();
       int column = 0;
-      for (Carta card : deck) {
+      for (CartaTradicional card : deck) {
          column++;
          s.append(card.toString()).append("   ");
          if (column % 4 == 0) {
