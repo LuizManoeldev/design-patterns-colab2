@@ -1,5 +1,7 @@
-package simple_actory;
+package factory;
 
+import creators.BaralhoTradicionalFactory;
+import creators.BaralhoUnoFactory;
 import interfaces.BaralhoInterface;
 
 public abstract class BaralhoSimpleFactory {

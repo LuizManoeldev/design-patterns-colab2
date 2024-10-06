@@ -1,6 +1,6 @@
 
+import factory.BaralhoSimpleFactory;
 import interfaces.BaralhoInterface;
-import simple_actory.BaralhoSimpleFactory;
 
 public class Main {
    public static void main(String[] args) {

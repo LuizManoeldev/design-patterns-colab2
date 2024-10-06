@@ -1,6 +1,7 @@
-package simple_actory;
+package creators;
 
-import baralho.Baralho;
+import baralhos.Baralho;
+import factory.BaralhoSimpleFactory;
 import interfaces.BaralhoInterface;
 
 class BaralhoTradicionalFactory extends BaralhoSimpleFactory {
